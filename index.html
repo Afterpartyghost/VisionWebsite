@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <title>Vision — The #1 Rivals Script</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { --ink:#060606; --card:#111; --line:rgba(255,255,255,.13); --muted:#9b9b9b; --white:#f7f7f4; --silver:#d3d3d1; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; color:var(--white); background:var(--ink); font-family:Inter, sans-serif; overflow-x:hidden; }
+      body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.18; z-index:20; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFncy='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); mix-blend-mode:screen; }
+      .nav { position:fixed; z-index:10; top:0; width:100%; height:86px; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(24px,5vw,76px); border-bottom:1px solid transparent; transition:.35s; }
+      .nav.scrolled { background:rgba(6,6,6,.82); border-color:var(--line); backdrop-filter:blur(16px); }
+      .brand { display:flex; align-items:center; gap:11px; color:#fff; font:700 18px/1 'Space Grotesk'; letter-spacing:-.06em; text-decoration:none; }
+      .mini-mark { width:28px; height:25px; position:relative; display:block; }
+      .mini-mark:before,.mini-mark:after { content:""; position:absolute; width:8px; height:28px; top:-2px; background:linear-gradient(120deg,#888,#fff 42%,#888); transform:rotate(29deg); transform-origin:bottom; border-radius:0 0 8px 8px; }
+      .mini-mark:before { left:2px; } .mini-mark:after { right:2px; transform:rotate(-29deg); }
+      .nav-links { display:flex; gap:35px; align-items:center; }
+      .nav-links a { color:#bdbdbd; text-decoration:none; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; transition:.2s; }
+      .nav-links a:hover { color:#fff; }
+      .nav-cta,.button { display:inline-flex; align-items:center; justify-content:center; gap:12px; background:var(--white); color:#080808; text-decoration:none; padding:13px 20px; border:0; font:700 12px Inter; letter-spacing:.06em; text-transform:uppercase; transition:transform .2s,background .2s; cursor:pointer; }
+      .nav-cta:hover,.button:hover { transform:translateY(-3px); background:#c9c9c9; }
+      .hero { min-height:100vh; position:relative; padding:154px clamp(24px,9vw,140px) 78px; display:flex; flex-direction:column; justify-content:center; isolation:isolate; overflow:hidden; }
+      .grid { position:absolute; inset:0; z-index:-2; opacity:.33; background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px); background-size:72px 72px; mask-image:linear-gradient(to bottom,black 20%,transparent 84%); }
+      .glow { position:absolute; z-index:-1; width:850px; height:650px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.14),transparent 66%); left:50%; top:42%; transform:translate(-50%,-50%); filter:blur(3px); }
+      .eyebrow { display:flex; gap:10px; align-items:center; margin-bottom:26px; color:#b6b6b6; font:500 11px 'DM Mono'; text-transform:uppercase; letter-spacing:.12em; animation:up .8s both; }
+      .pulse { width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7); animation:pulse 2s infinite; }
+      h1 { max-width:900px; margin:0; font:900 clamp(58px,9.1vw,138px)/.84 'Space Grotesk'; letter-spacing:-.092em; text-transform:uppercase; animation:up .85s .08s both; }
+      h1 .metal { color:transparent; background:linear-gradient(125deg,#666 0%,#fff 24%,#b1b1b1 49%,#fff 68%,#717171 100%); background-clip:text; -webkit-background-clip:text; }
+      .hero-bottom { display:flex; justify-content:space-between; align-items:end; margin-top:47px; animation:up .85s .18s both; }
+      .intro { max-width:360px; margin:0; color:#a9a9a9; font-size:14px; line-height:1.7; }
+      .hero-buttons { display:flex; gap:12px; margin-top:23px; } .button.dark { background:#1c1c1c;color:#fff;border:1px solid var(--line); } .button.dark:hover { background:#282828; }
+      .hero-index { font:500 11px 'DM Mono'; color:#777; letter-spacing:.12em; }
+      .vision-mark { position:absolute; right:5.3vw; bottom:4.5vh; width:min(36vw,470px); height:min(36vw,470px); opacity:.72; filter:drop-shadow(0 20px 30px rgba(0,0,0,.75)); animation:float 6s ease-in-out infinite; z-index:-1; }
+      .vision-mark .v { position:absolute; width:15%; height:96%; top:-2%; background:linear-gradient(110deg,#6f6f6f,#fefefe 40%,#9f9f9f 77%,#ebebeb); clip-path:polygon(0 0,100% 0,65% 100%,35% 100%); }
+      .vision-mark .left { left:23%; transform:rotate(-29deg); }.vision-mark .right { right:23%; transform:rotate(29deg); }
+      .vision-mark .ring { position:absolute; width:70%;height:43%; left:15%;top:35%;border:24px solid transparent;border-top-color:#cfcfcf;border-bottom-color:#a5a5a5;border-radius:50%; transform:rotate(-3deg); opacity:.82; }
+      .scroll { position:absolute; bottom:30px; left:clamp(24px,5vw,76px); font:500 10px 'DM Mono'; letter-spacing:.16em; color:#777; text-transform:uppercase; writing-mode:vertical-rl; }
+      .scroll:after { content:""; height:48px;width:1px;background:#777;display:inline-block;margin-top:10px;animation:scroll 2s infinite; }
+      .stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:0 clamp(24px,5vw,76px); }
+      .stat { padding:32px 0 31px; border-right:1px solid var(--line); padding-left:clamp(20px,4vw,68px); }.stat:last-child{border:0}.stat strong{display:block;font:700 clamp(30px,4vw,56px)/1 'Space Grotesk';letter-spacing:-.07em}.stat span{font:500 10px 'DM Mono';color:#8d8d8d;letter-spacing:.12em;text-transform:uppercase;}
+      .features { padding:150px clamp(24px,9vw,140px); }.section-label{font:500 11px 'DM Mono';letter-spacing:.12em;color:#888;text-transform:uppercase}.features-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:52px}.features h2{font:700 clamp(38px,5vw,72px)/.95 'Space Grotesk';letter-spacing:-.07em;margin:12px 0 0;max-width:520px}.features-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.feature{min-height:268px;padding:27px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(145deg,#111,#090909);transition:.35s}.feature:hover{background:linear-gradient(145deg,#1d1d1d,#0d0d0d);transform:translateY(-5px)}.feature-no{font:500 10px 'DM Mono';color:#777}.feature h3{font:600 23px 'Space Grotesk';letter-spacing:-.05em;margin:68px 0 9px}.feature p{font-size:13px;line-height:1.6;color:#929292;margin:0;max-width:240px}
+      .cta { position:relative;padding:120px 24px;text-align:center;overflow:hidden;border-top:1px solid var(--line);background:#0c0c0c }.cta h2{font:700 clamp(48px,8vw,120px)/.84 'Space Grotesk';letter-spacing:-.09em;text-transform:uppercase;margin:17px auto 31px;max-width:950px}.cta p{color:#999;margin:0 0 25px;font-size:14px}.cta .button{padding:16px 25px}.footer{display:flex;justify-content:space-between;padding:27px clamp(24px,5vw,76px);color:#777;font:500 10px 'DM Mono';letter-spacing:.08em;text-transform:uppercase}.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}.reveal.show{opacity:1;transform:none}
+      @keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}@keyframes float{50%{transform:translateY(-18px) rotate(2deg)}}@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@keyframes scroll{50%{transform:scaleY(.3);transform-origin:top}}
+      @media(max-width:760px){.nav{height:70px}.nav-links{display:none}.nav-cta{padding:10px 13px;font-size:10px}.hero{padding-top:120px;min-height:780px}.vision-mark{width:78vw;height:78vw;right:-15vw;bottom:14vh;opacity:.35}h1{font-size:clamp(57px,17vw,100px)}.hero-bottom{display:block}.hero-index{display:none}.stats{margin:0;grid-template-columns:1fr}.stat{padding:20px 26px;border-right:0;border-bottom:1px solid var(--line)}.features{padding:90px 24px}.features-head{display:block}.features-grid{grid-template-columns:1fr}.feature{min-height:210px}.feature h3{margin-top:36px}.scroll{display:none}.footer{display:block;line-height:2}}
+    </style>
+  </head>
+  <body>
+    <nav class="nav" id="nav"><a class="brand" href="#"><i class="mini-mark"></i>VISION</a><div class="nav-links"><a href="#features">Features</a><a href="#about">Why Vision</a><a href="#community">Community</a></div><a class="nav-cta" href="#access">Get access <span>↗</span></a></nav>
+    <main>
+      <section class="hero" id="about"><div class="grid"></div><div class="glow"></div><div class="vision-mark" aria-hidden="true"><i class="ring"></i><i class="v left"></i><i class="v right"></i></div><div class="eyebrow"><span class="pulse"></span> Precision engineered / 2025</div><h1>See the game.<br><span class="metal">Own the round.</span></h1><div class="hero-bottom"><div><p class="intro">Vision is the next-generation Rivals script built for players who expect more. Faster reads. Cleaner control. Absolute confidence.</p><div class="hero-buttons"><a class="button" href="#access">Get Vision <b>→</b></a><a class="button dark" href="#features">Explore features</a></div></div><div class="hero-index">01 — 04</div></div><div class="scroll">Scroll to explore</div></section>
+      <section class="stats reveal"><div class="stat"><strong>01</strong><span>Rivals script</span></div><div class="stat"><strong>∞</strong><span>Performance edge</span></div><div class="stat"><strong>24/7</strong><span>Always evolving</span></div></section>
+      <section class="features" id="features"><div class="features-head reveal"><div><span class="section-label">The vision standard</span><h2>Built for the players who refuse average.</h2></div><span class="section-label">02 — Capabilities</span></div><div class="features-grid"><article class="feature reveal"><span class="feature-no">01 / 03</span><h3>Pinpoint control</h3><p>Precision-tuned tools that feel like a natural extension of your play.</p></article><article class="feature reveal"><span class="feature-no">02 / 03</span><h3>Clean intelligence</h3><p>Everything you need, presented with the clarity to make the right call instantly.</p></article><article class="feature reveal"><span class="feature-no">03 / 03</span><h3>Always ahead</h3><p>Relentless updates and an uncompromising focus on the competitive edge.</p></article></div></section>
+      <section class="cta" id="access"><span class="section-label">Your game, elevated</span><h2>Vision starts<br>where limits end.</h2><p>Join the players setting a new standard in Rivals.</p><a class="button" href="mailto:hello@vision.gg">Get access <b>→</b></a></section>
+    </main><footer class="footer"><span>© 2025 Vision</span><span>Built for the relentless</span><span>Rivals / Script</span></footer>
+    <script>const nav=document.querySelector('.nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));</script>
+  </body>
+</html>
