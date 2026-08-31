@@ -1,63 +1,65 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#050505" />
-    <title>Vision — The #1 Rivals Script</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-      :root { --ink:#060606; --card:#111; --line:rgba(255,255,255,.13); --muted:#9b9b9b; --white:#f7f7f4; --silver:#d3d3d1; }
-      * { box-sizing:border-box; }
-      html { scroll-behavior:smooth; }
-      body { margin:0; color:var(--white); background:var(--ink); font-family:Inter, sans-serif; overflow-x:hidden; }
-      body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.18; z-index:20; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFncy='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); mix-blend-mode:screen; }
-      .nav { position:fixed; z-index:10; top:0; width:100%; height:86px; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(24px,5vw,76px); border-bottom:1px solid transparent; transition:.35s; }
-      .nav.scrolled { background:rgba(6,6,6,.82); border-color:var(--line); backdrop-filter:blur(16px); }
-      .brand { display:flex; align-items:center; gap:11px; color:#fff; font:700 18px/1 'Space Grotesk'; letter-spacing:-.06em; text-decoration:none; }
-      .mini-mark { width:28px; height:25px; position:relative; display:block; }
-      .mini-mark:before,.mini-mark:after { content:""; position:absolute; width:8px; height:28px; top:-2px; background:linear-gradient(120deg,#888,#fff 42%,#888); transform:rotate(29deg); transform-origin:bottom; border-radius:0 0 8px 8px; }
-      .mini-mark:before { left:2px; } .mini-mark:after { right:2px; transform:rotate(-29deg); }
-      .nav-links { display:flex; gap:35px; align-items:center; }
-      .nav-links a { color:#bdbdbd; text-decoration:none; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; transition:.2s; }
-      .nav-links a:hover { color:#fff; }
-      .nav-cta,.button { display:inline-flex; align-items:center; justify-content:center; gap:12px; background:var(--white); color:#080808; text-decoration:none; padding:13px 20px; border:0; font:700 12px Inter; letter-spacing:.06em; text-transform:uppercase; transition:transform .2s,background .2s; cursor:pointer; }
-      .nav-cta:hover,.button:hover { transform:translateY(-3px); background:#c9c9c9; }
-      .hero { min-height:100vh; position:relative; padding:154px clamp(24px,9vw,140px) 78px; display:flex; flex-direction:column; justify-content:center; isolation:isolate; overflow:hidden; }
-      .grid { position:absolute; inset:0; z-index:-2; opacity:.33; background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px); background-size:72px 72px; mask-image:linear-gradient(to bottom,black 20%,transparent 84%); }
-      .glow { position:absolute; z-index:-1; width:850px; height:650px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,.14),transparent 66%); left:50%; top:42%; transform:translate(-50%,-50%); filter:blur(3px); }
-      .eyebrow { display:flex; gap:10px; align-items:center; margin-bottom:26px; color:#b6b6b6; font:500 11px 'DM Mono'; text-transform:uppercase; letter-spacing:.12em; animation:up .8s both; }
-      .pulse { width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7); animation:pulse 2s infinite; }
-      h1 { max-width:900px; margin:0; font:900 clamp(58px,9.1vw,138px)/.84 'Space Grotesk'; letter-spacing:-.092em; text-transform:uppercase; animation:up .85s .08s both; }
-      h1 .metal { color:transparent; background:linear-gradient(125deg,#666 0%,#fff 24%,#b1b1b1 49%,#fff 68%,#717171 100%); background-clip:text; -webkit-background-clip:text; }
-      .hero-bottom { display:flex; justify-content:space-between; align-items:end; margin-top:47px; animation:up .85s .18s both; }
-      .intro { max-width:360px; margin:0; color:#a9a9a9; font-size:14px; line-height:1.7; }
-      .hero-buttons { display:flex; gap:12px; margin-top:23px; } .button.dark { background:#1c1c1c;color:#fff;border:1px solid var(--line); } .button.dark:hover { background:#282828; }
-      .hero-index { font:500 11px 'DM Mono'; color:#777; letter-spacing:.12em; }
-      .vision-mark { position:absolute; right:5.3vw; bottom:4.5vh; width:min(36vw,470px); height:min(36vw,470px); opacity:.72; filter:drop-shadow(0 20px 30px rgba(0,0,0,.75)); animation:float 6s ease-in-out infinite; z-index:-1; }
-      .vision-mark .v { position:absolute; width:15%; height:96%; top:-2%; background:linear-gradient(110deg,#6f6f6f,#fefefe 40%,#9f9f9f 77%,#ebebeb); clip-path:polygon(0 0,100% 0,65% 100%,35% 100%); }
-      .vision-mark .left { left:23%; transform:rotate(-29deg); }.vision-mark .right { right:23%; transform:rotate(29deg); }
-      .vision-mark .ring { position:absolute; width:70%;height:43%; left:15%;top:35%;border:24px solid transparent;border-top-color:#cfcfcf;border-bottom-color:#a5a5a5;border-radius:50%; transform:rotate(-3deg); opacity:.82; }
-      .scroll { position:absolute; bottom:30px; left:clamp(24px,5vw,76px); font:500 10px 'DM Mono'; letter-spacing:.16em; color:#777; text-transform:uppercase; writing-mode:vertical-rl; }
-      .scroll:after { content:""; height:48px;width:1px;background:#777;display:inline-block;margin-top:10px;animation:scroll 2s infinite; }
-      .stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:0 clamp(24px,5vw,76px); }
-      .stat { padding:32px 0 31px; border-right:1px solid var(--line); padding-left:clamp(20px,4vw,68px); }.stat:last-child{border:0}.stat strong{display:block;font:700 clamp(30px,4vw,56px)/1 'Space Grotesk';letter-spacing:-.07em}.stat span{font:500 10px 'DM Mono';color:#8d8d8d;letter-spacing:.12em;text-transform:uppercase;}
-      .features { padding:150px clamp(24px,9vw,140px); }.section-label{font:500 11px 'DM Mono';letter-spacing:.12em;color:#888;text-transform:uppercase}.features-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:52px}.features h2{font:700 clamp(38px,5vw,72px)/.95 'Space Grotesk';letter-spacing:-.07em;margin:12px 0 0;max-width:520px}.features-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.feature{min-height:268px;padding:27px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(145deg,#111,#090909);transition:.35s}.feature:hover{background:linear-gradient(145deg,#1d1d1d,#0d0d0d);transform:translateY(-5px)}.feature-no{font:500 10px 'DM Mono';color:#777}.feature h3{font:600 23px 'Space Grotesk';letter-spacing:-.05em;margin:68px 0 9px}.feature p{font-size:13px;line-height:1.6;color:#929292;margin:0;max-width:240px}
-      .cta { position:relative;padding:120px 24px;text-align:center;overflow:hidden;border-top:1px solid var(--line);background:#0c0c0c }.cta h2{font:700 clamp(48px,8vw,120px)/.84 'Space Grotesk';letter-spacing:-.09em;text-transform:uppercase;margin:17px auto 31px;max-width:950px}.cta p{color:#999;margin:0 0 25px;font-size:14px}.cta .button{padding:16px 25px}.footer{display:flex;justify-content:space-between;padding:27px clamp(24px,5vw,76px);color:#777;font:500 10px 'DM Mono';letter-spacing:.08em;text-transform:uppercase}.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}.reveal.show{opacity:1;transform:none}
-      @keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}@keyframes float{50%{transform:translateY(-18px) rotate(2deg)}}@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@keyframes scroll{50%{transform:scaleY(.3);transform-origin:top}}
-      @media(max-width:760px){.nav{height:70px}.nav-links{display:none}.nav-cta{padding:10px 13px;font-size:10px}.hero{padding-top:120px;min-height:780px}.vision-mark{width:78vw;height:78vw;right:-15vw;bottom:14vh;opacity:.35}h1{font-size:clamp(57px,17vw,100px)}.hero-bottom{display:block}.hero-index{display:none}.stats{margin:0;grid-template-columns:1fr}.stat{padding:20px 26px;border-right:0;border-bottom:1px solid var(--line)}.features{padding:90px 24px}.features-head{display:block}.features-grid{grid-template-columns:1fr}.feature{min-height:210px}.feature h3{margin-top:36px}.scroll{display:none}.footer{display:block;line-height:2}}
-    </style>
-  </head>
-  <body>
-    <nav class="nav" id="nav"><a class="brand" href="#"><i class="mini-mark"></i>VISION</a><div class="nav-links"><a href="#features">Features</a><a href="#about">Why Vision</a><a href="#community">Community</a></div><a class="nav-cta" href="#access">Get access <span>↗</span></a></nav>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vision — The #1 Rivals Script</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--black:#050505;--white:#f4f4f0;--grey:#878786;--line:#292929}*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:var(--black);color:var(--white);font-family:Inter,Arial,sans-serif}.site{min-height:100svh;max-width:1600px;margin:auto;padding:0 4vw;display:flex;flex-direction:column;overflow:hidden}nav{height:80px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex:0 0 auto}.wordmark{display:inline-flex;align-items:center;gap:9px;color:var(--white);text-decoration:none;font-size:16px;font-weight:900;letter-spacing:-.1em}.wordmark .logo{display:block;width:22px;height:22px;flex:0 0 auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55))}.nav-right{display:flex;align-items:center;gap:28px;font:500 10px 'DM Mono';letter-spacing:.1em;text-transform:uppercase;color:#8c8c8b}.nav-right a{color:var(--white);text-decoration:none;border-bottom:1px solid #eee;padding-bottom:5px;transition:opacity .2s}.nav-right a:hover{opacity:.58}
+    main{position:relative;flex:1;min-height:650px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4vh 0 3vh;text-align:center}.stamp{font:500 10px 'DM Mono';letter-spacing:.1em;color:#8b8b8b;text-transform:uppercase;margin:0 0 18px;animation:up .7s cubic-bezier(.2,.7,.2,1) both}.stamp b{color:#f0f0ed;font-weight:500;margin-right:10px}h1{position:relative;z-index:2;margin:0;font-size:clamp(68px,10.35vw,174px);line-height:.76;letter-spacing:-.102em;font-weight:900;text-transform:uppercase;animation:up .9s .1s cubic-bezier(.2,.7,.2,1) both}h1 .number{color:#777;animation:num 3.4s ease-in-out infinite}h1 .outline{color:transparent;-webkit-text-stroke:1px #858585}.sub{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:34px;margin-top:52px;animation:up .9s .2s cubic-bezier(.2,.7,.2,1) both}.sub p{margin:0;max-width:420px;color:#979796;font-size:12px;line-height:1.65}.sub p strong{font-weight:700;color:#e7e7e4}.dd{position:relative}.button{position:relative;display:inline-flex;gap:26px;align-items:center;justify-content:center;padding:14px 26px;border:1px solid #eee;border-radius:2px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--white);text-decoration:none;background:transparent;cursor:pointer;font-family:inherit;transition:.25s;overflow:visible;animation:up .9s .3s cubic-bezier(.2,.7,.2,1) both,glow 2.4s 1.6s ease-in-out infinite}.button::after{content:'';position:absolute;top:0;left:0;height:100%;width:60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.42),rgba(255,255,255,0));transform:translateX(-160%) skewX(-18deg);animation:shine 3.4s 2s ease-in-out infinite}.button:hover{background:var(--white);color:#080808}.menu{position:absolute;left:50%;top:calc(100% + 14px);transform:translateX(-50%) translateY(6px);min-width:230px;background:#0c0c0c;border:1px solid var(--line);opacity:0;visibility:hidden;pointer-events:none;transition:.18s ease;z-index:20;box-shadow:0 24px 50px rgba(0,0,0,.55)}.dd.open .menu,.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}.menu a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 18px;font:800 10px 'DM Mono';letter-spacing:.1em;text-transform:uppercase;color:var(--white);text-decoration:none;border-bottom:1px solid var(--line);transition:.18s}.menu a:last-child{border-bottom:0}.menu a:hover,.menu a:focus-visible{background:var(--white);color:#080808}
+    .vertical{position:absolute;right:-1vw;top:0;height:100%;padding:0 0 0 17px;border-left:1px solid var(--line);display:flex;align-items:center;font:500 9px 'DM Mono';letter-spacing:.23em;color:#585858;writing-mode:vertical-rl;text-transform:uppercase}
+    footer{height:56px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;color:#747473;font:500 9px 'DM Mono';letter-spacing:.09em;text-transform:uppercase;flex:0 0 auto}@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}@keyframes num{0%,100%{color:#6d6d6d}50%{color:#e8e7e4}}@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(244,244,240,0)}50%{box-shadow:0 0 24px 6px rgba(244,244,240,.22)}}@keyframes shine{0%{transform:translateX(-160%) skewX(-18deg)}55%,100%{transform:translateX(280%) skewX(-18deg)}}@media(max-width:720px){.site{padding:0 22px}nav{height:68px}.nav-right span{display:none}.nav-right{gap:0}main{min-height:680px;justify-content:flex-start;padding-top:78px}.stamp{margin-bottom:17px}h1{font-size:clamp(68px,18.5vw,126px);line-height:.78}.sub{display:flex;margin-top:40px}.button{margin-top:2px}.vertical{display:none}footer span:last-child{display:none}.outline{-webkit-text-stroke:.8px #858585}}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <nav>
+      <a class="wordmark" href="#"><svg class="logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><defs><linearGradient id="vw-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f4f0"/><stop offset="1" stop-color="#6f6f6c"/></linearGradient><linearGradient id="vw-core" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b0b0ad"/></linearGradient></defs><circle cx="12" cy="12" r="8.5" fill="none" stroke="url(#vw-ring)" stroke-width="1.6"/><g opacity=".75" stroke="#d4d4d0" stroke-width="1.2" stroke-linecap="round"><path d="M12 1.5v3"/><path d="M12 19.5v3"/><path d="M1.5 12h3"/><path d="M19.5 12h3"/></g><circle cx="12" cy="3.5" r="1.5" fill="#ffffff"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="3s" repeatCount="indefinite"/></circle><circle cx="12" cy="12" r="2.3" fill="url(#vw-core)"><animate attributeName="opacity" values="0.55;1;0.55" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"/></circle></svg>VISION</a>
+      <div class="nav-right"><span>Rivals / 2025</span><a href="https://discord.gg/nneJBUNqRA">Get access ↗</a></div>
+    </nav>
     <main>
-      <section class="hero" id="about"><div class="grid"></div><div class="glow"></div><div class="vision-mark" aria-hidden="true"><i class="ring"></i><i class="v left"></i><i class="v right"></i></div><div class="eyebrow"><span class="pulse"></span> Precision engineered / 2025</div><h1>See the game.<br><span class="metal">Own the round.</span></h1><div class="hero-bottom"><div><p class="intro">Vision is the next-generation Rivals script built for players who expect more. Faster reads. Cleaner control. Absolute confidence.</p><div class="hero-buttons"><a class="button" href="#access">Get Vision <b>→</b></a><a class="button dark" href="#features">Explore features</a></div></div><div class="hero-index">01 — 04</div></div><div class="scroll">Scroll to explore</div></section>
-      <section class="stats reveal"><div class="stat"><strong>01</strong><span>Rivals script</span></div><div class="stat"><strong>∞</strong><span>Performance edge</span></div><div class="stat"><strong>24/7</strong><span>Always evolving</span></div></section>
-      <section class="features" id="features"><div class="features-head reveal"><div><span class="section-label">The vision standard</span><h2>Built for the players who refuse average.</h2></div><span class="section-label">02 — Capabilities</span></div><div class="features-grid"><article class="feature reveal"><span class="feature-no">01 / 03</span><h3>Pinpoint control</h3><p>Precision-tuned tools that feel like a natural extension of your play.</p></article><article class="feature reveal"><span class="feature-no">02 / 03</span><h3>Clean intelligence</h3><p>Everything you need, presented with the clarity to make the right call instantly.</p></article><article class="feature reveal"><span class="feature-no">03 / 03</span><h3>Always ahead</h3><p>Relentless updates and an uncompromising focus on the competitive edge.</p></article></div></section>
-      <section class="cta" id="access"><span class="section-label">Your game, elevated</span><h2>Vision starts<br>where limits end.</h2><p>Join the players setting a new standard in Rivals.</p><a class="button" href="mailto:hello@vision.gg">Get access <b>→</b></a></section>
-    </main><footer class="footer"><span>© 2025 Vision</span><span>Built for the relentless</span><span>Rivals / Script</span></footer>
-    <script>const nav=document.querySelector('.nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));</script>
-  </body>
+      <p class="stamp"><b>01</b> Vision for Rivals</p>
+      <h1>THE <span class="number">#1</span><br>RIVALS<br><span class="outline">SCRIPT.</span></h1>
+      <div class="sub">
+        <p><strong>Built for players who already know where the edge is.</strong> Vision turns that instinct into an advantage.</p>
+        <div class="dd">
+          <button class="button" type="button" aria-haspopup="true" aria-expanded="false">Get Access <span>▾</span></button>
+          <div class="menu">
+            <a href="https://ads.luarmor.net/get_key?for=Vision_key-lOZiEVXlUEdx">Get Key <span>↗</span></a>
+            <a href="https://discord.gg/nneJBUNqRA">Discord Server <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="vertical">Vision / The #1 Rivals Script / Vision / The #1 Rivals Script</div>
+    </main>
+    <footer><span>© Vision</span><span>Precision over noise</span><span>Rivals Script</span></footer>
+  </div>
+<script>
+    var dd = document.querySelector('.dd');
+    var btn = dd ? dd.querySelector('button') : null;
+    if (dd && btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!dd.contains(e.target)) {
+          dd.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          dd.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+</body>
 </html>
