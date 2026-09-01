@@ -9,20 +9,34 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{--black:#050505;--white:#f4f4f0;--grey:#878786;--line:#292929}*{box-sizing:border-box}html{background:var(--black)}body{margin:0;background:var(--black);color:var(--white);font-family:Inter,Arial,sans-serif}.site{min-height:100svh;max-width:1600px;margin:auto;padding:0 4vw;display:flex;flex-direction:column;overflow:hidden}nav{height:80px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex:0 0 auto}.wordmark{display:inline-flex;align-items:center;gap:9px;color:var(--white);text-decoration:none;font-size:16px;font-weight:900;letter-spacing:-.1em}.wordmark .logo{display:block;width:22px;height:22px;flex:0 0 auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55))}.nav-right{display:flex;align-items:center;gap:28px;font:500 10px 'DM Mono';letter-spacing:.1em;text-transform:uppercase;color:#8c8c8b}.nav-right a{color:var(--white);text-decoration:none;border-bottom:1px solid #eee;padding-bottom:5px;transition:opacity .2s}.nav-right a:hover{opacity:.58}
-    main{position:relative;flex:1;min-height:650px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4vh 0 3vh;text-align:center}.stamp{font:500 10px 'DM Mono';letter-spacing:.1em;color:#8b8b8b;text-transform:uppercase;margin:0 0 18px;animation:up .7s cubic-bezier(.2,.7,.2,1) both}.stamp b{color:#f0f0ed;font-weight:500;margin-right:10px}h1{position:relative;z-index:2;margin:0;font-size:clamp(68px,10.35vw,174px);line-height:.76;letter-spacing:-.102em;font-weight:900;text-transform:uppercase;animation:up .9s .1s cubic-bezier(.2,.7,.2,1) both}h1 .number{color:#777;animation:num 3.4s ease-in-out infinite}h1 .outline{color:transparent;-webkit-text-stroke:1px #858585}.sub{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:34px;margin-top:52px;animation:up .9s .2s cubic-bezier(.2,.7,.2,1) both}.sub p{margin:0;max-width:420px;color:#979796;font-size:12px;line-height:1.65}.sub p strong{font-weight:700;color:#e7e7e4}.dd{position:relative}.button{position:relative;display:inline-flex;gap:26px;align-items:center;justify-content:center;padding:14px 26px;border:1px solid #eee;border-radius:2px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--white);text-decoration:none;background:transparent;cursor:pointer;font-family:inherit;transition:.25s;overflow:visible;animation:up .9s .3s cubic-bezier(.2,.7,.2,1) both,glow 2.4s 1.6s ease-in-out infinite}.button::after{content:'';position:absolute;top:0;left:0;height:100%;width:60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.42),rgba(255,255,255,0));transform:translateX(-160%) skewX(-18deg);animation:shine 3.4s 2s ease-in-out infinite}.button:hover{background:var(--white);color:#080808}.menu{position:absolute;left:50%;top:calc(100% + 14px);transform:translateX(-50%) translateY(6px);min-width:230px;background:#0c0c0c;border:1px solid var(--line);opacity:0;visibility:hidden;pointer-events:none;transition:.18s ease;z-index:20;box-shadow:0 24px 50px rgba(0,0,0,.55)}.dd.open .menu,.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}.menu a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 18px;font:800 10px 'DM Mono';letter-spacing:.1em;text-transform:uppercase;color:var(--white);text-decoration:none;border-bottom:1px solid var(--line);transition:.18s}.menu a:last-child{border-bottom:0}.menu a:hover,.menu a:focus-visible{background:var(--white);color:#080808}
-    .vertical{position:absolute;right:-1vw;top:0;height:100%;padding:0 0 0 17px;border-left:1px solid var(--line);display:flex;align-items:center;font:500 9px 'DM Mono';letter-spacing:.23em;color:#585858;writing-mode:vertical-rl;text-transform:uppercase}
-    footer{height:56px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;color:#747473;font:500 9px 'DM Mono';letter-spacing:.09em;text-transform:uppercase;flex:0 0 auto}@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}@keyframes num{0%,100%{color:#6d6d6d}50%{color:#e8e7e4}}@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(244,244,240,0)}50%{box-shadow:0 0 24px 6px rgba(244,244,240,.22)}}@keyframes shine{0%{transform:translateX(-160%) skewX(-18deg)}55%,100%{transform:translateX(280%) skewX(-18deg)}}@media(max-width:720px){.site{padding:0 22px}nav{height:68px}.nav-right span{display:none}.nav-right{gap:0}main{min-height:680px;justify-content:flex-start;padding-top:78px}.stamp{margin-bottom:17px}h1{font-size:clamp(68px,18.5vw,126px);line-height:.78}.sub{display:flex;margin-top:40px}.button{margin-top:2px}.vertical{display:none}footer span:last-child{display:none}.outline{-webkit-text-stroke:.8px #858585}}
+    main{position:relative;flex:1;min-height:650px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4vh 0 3vh;text-align:center}.stamp{font:500 10px 'DM Mono';letter-spacing:.1em;color:#8b8b8b;text-transform:uppercase;margin:0 0 18px;animation:up .7s cubic-bezier(.2,.7,.2,1) both}.stamp b{color:#f0f0ed;font-weight:500;margin-right:10px}h1{position:relative;z-index:2;margin:0;display:flex;flex-direction:column;align-items:center;gap:0.04em;font-size:clamp(68px,10.35vw,174px);line-height:.72;letter-spacing:-.102em;font-weight:900;text-transform:uppercase;animation:up .9s .1s cubic-bezier(.2,.7,.2,1) both}.typewriter{display:flex;flex-direction:column;align-items:center}.h1-line{display:block;overflow:hidden;width:0;white-space:nowrap;max-width:100%;animation:typing 1.9s steps(18, end) forwards}.h1-line:nth-child(1){animation-delay:.4s}.h1-line:nth-child(2){animation-delay:.95s}.h1-line:nth-child(3){animation-delay:1.5s}.h1-line.accent{color:#f4f4f0}.typewriter .number{color:#777;animation:num 3.4s ease-in-out infinite}.typewriter .outline{color:transparent;-webkit-text-stroke:1px #858585}.sub{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:34px;margin-top:52px;animation:up .9s .2s cubic-bezier(.2,.7,.2,1) both}.sub p{margin:0;max-width:420px;color:#979796;font-size:12px;line-height:1.65}.sub p strong{font-weight:700;color:#e7e7e4}.dd{position:relative}.button{position:relative;display:inline-flex;gap:26px;align-items:center;justify-content:center;padding:14px 26px;border:1px solid #eee;border-radius:2px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--white);text-decoration:none;background:transparent;cursor:pointer;font-family:inherit;transition:.25s;overflow:visible;animation:up .9s .3s cubic-bezier(.2,.7,.2,1) both,glow 2.4s 1.6s ease-in-out infinite}.button::after{content:'';position:absolute;top:0;left:0;height:100%;width:60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.42),rgba(255,255,255,0));transform:translateX(-160%) skewX(-18deg);animation:shine 3.4s 2s ease-in-out infinite}.button:hover{background:var(--white);color:#080808}.menu{position:absolute;left:50%;top:calc(100% + 14px);transform:translateX(-50%) translateY(6px);min-width:230px;background:#0c0c0c;border:1px solid var(--line);opacity:0;visibility:hidden;pointer-events:none;transition:.18s ease;z-index:20;box-shadow:0 24px 50px rgba(0,0,0,.55)}.dd.open .menu,.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}.menu a{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 18px;font:800 10px 'DM Mono';letter-spacing:.1em;text-transform:uppercase;color:var(--white);text-decoration:none;border-bottom:1px solid var(--line);transition:.18s}.menu a:last-child{border-bottom:0}.menu a:hover,.menu a:focus-visible{background:var(--white);color:#080808}
+    .scroll-intro{width:100%;padding:10px 0 0;opacity:1}.scroll-intro-inner{width:100%;overflow:hidden;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0));padding:22px 24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.typewriter-block{display:block;max-width:100%}.typewriter-line{display:block;opacity:0;transform:translate3d(0,16px,0);transition:opacity .7s ease,transform .7s ease}.typewriter-line.visible{opacity:1;transform:translate3d(0,0,0)}.typewriter-text{display:block;overflow:hidden;border-right:2px solid #f4f4f0;white-space:normal;word-break:break-word;overflow-wrap:anywhere;max-width:100%;width:0;vertical-align:bottom;animation:typing 2.1s steps(28, end) forwards,caret .8s step-end infinite}.typewriter-line:nth-child(1) .typewriter-text{animation-delay:.2s}.typewriter-line:nth-child(2) .typewriter-text{animation-delay:.9s}.typewriter-line:nth-child(3) .typewriter-text{animation-delay:1.5s}.typewriter-line:nth-child(4) .typewriter-text{animation-delay:2.2s}.typewriter-text strong{color:#f4f4f0}.scroll-intro label{display:block;font:500 10px 'DM Mono';letter-spacing:.18em;color:#9a9a99;text-transform:uppercase;margin-bottom:12px}.scroll-intro .lead{display:block;font:700 clamp(30px,4.6vw,70px)/.9 'Inter';letter-spacing:-.073em;color:#f4f4f0;margin-bottom:10px}.scroll-intro .body{display:block;margin-top:10px;color:#b1b1af;font-size:14px;line-height:1.8;max-width:720px;padding-left:18px;border-left:1px solid rgba(255,255,255,.12)}.scroll-intro strong{color:#fff;font-weight:700}
+    footer{height:56px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;color:#747473;font:500 9px 'DM Mono';letter-spacing:.09em;text-transform:uppercase;flex:0 0 auto}@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}@keyframes typing{from{width:0}to{width:100%}}@keyframes caret{from,to{border-color:transparent}50%{border-color:#f4f4f0}}@keyframes num{0%,100%{color:#6d6d6d}50%{color:#e8e7e4}}@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(244,244,240,0)}50%{box-shadow:0 0 24px 6px rgba(244,244,240,.22)}}@keyframes shine{0%{transform:translateX(-160%) skewX(-18deg)}55%,100%{transform:translateX(280%) skewX(-18deg)}}@media(max-width:720px){.site{padding:0 22px}nav{height:68px}.nav-right span{display:none}.nav-right{gap:0}main{min-height:680px;justify-content:flex-start;padding-top:78px}.stamp{margin-bottom:17px}h1{font-size:clamp(68px,18.5vw,126px);line-height:.78}.h1-line{font-size:clamp(68px,18.5vw,126px)}.sub{display:flex;margin-top:40px}.button{margin-top:2px}.scroll-intro-inner{padding:20px 18px}.scroll-intro .body{max-width:100%;padding-left:0;border-left:none}footer span:last-child{display:none}.outline{-webkit-text-stroke:.8px #858585}}
   </style>
 </head>
 <body>
   <div class="site">
     <nav>
       <a class="wordmark" href="#"><svg class="logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><defs><linearGradient id="vw-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f4f0"/><stop offset="1" stop-color="#6f6f6c"/></linearGradient><linearGradient id="vw-core" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b0b0ad"/></linearGradient></defs><circle cx="12" cy="12" r="8.5" fill="none" stroke="url(#vw-ring)" stroke-width="1.6"/><g opacity=".75" stroke="#d4d4d0" stroke-width="1.2" stroke-linecap="round"><path d="M12 1.5v3"/><path d="M12 19.5v3"/><path d="M1.5 12h3"/><path d="M19.5 12h3"/></g><circle cx="12" cy="3.5" r="1.5" fill="#ffffff"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="3s" repeatCount="indefinite"/></circle><circle cx="12" cy="12" r="2.3" fill="url(#vw-core)"><animate attributeName="opacity" values="0.55;1;0.55" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"/></circle></svg>VISION</a>
-      <div class="nav-right"><span>Rivals / 2025</span><a href="https://discord.gg/nneJBUNqRA">Get access ↗</a></div>
+      <div class="nav-right"><a href="https://discord.gg/nneJBUNqRA">Get access ↗</a></div>
     </nav>
+    <div class="scroll-intro" aria-label="Vision intro scroll reveal">
+      <div class="scroll-intro-inner">
+        <div class="typewriter-block">
+          <div class="typewriter-line"><label>What is Vision</label></div>
+          <div class="typewriter-line"><span class="lead"><span class="typewriter-text">Vision is one of the best Rivals scripts.</span></span></div>
+          <div class="typewriter-line"><span class="body"><span class="typewriter-text">It was founded by <strong>@vision</strong> on Discord and built for players who want cleaner reads, sharper timing, and more confidence in every round.</span></span></div>
+          <div class="typewriter-line"><span class="body"><span class="typewriter-text">From smoother execution to better flow under pressure, Vision stays focused on precision, consistency, and the competitive edge.</span></span></div>
+        </div>
+      </div>
+    </div>
     <main>
       <p class="stamp"><b>01</b> Vision for Rivals</p>
-      <h1>THE <span class="number">#1</span><br>RIVALS<br><span class="outline">SCRIPT.</span></h1>
+      <h1 class="typewriter">
+        <span class="h1-line">WELCOME</span>
+        <span class="h1-line">TO</span>
+        <span class="h1-line accent">VISION</span>
+      </h1>
       <div class="sub">
         <p><strong>Built for players who already know where the edge is.</strong> Vision turns that instinct into an advantage.</p>
         <div class="dd">
@@ -33,7 +47,7 @@
           </div>
         </div>
       </div>
-      <div class="vertical">Vision / The #1 Rivals Script / Vision / The #1 Rivals Script</div>
+
     </main>
     <footer><span>© Vision</span><span>Precision over noise</span><span>Rivals Script</span></footer>
   </div>
@@ -58,6 +72,27 @@
           dd.classList.remove('open');
           btn.setAttribute('aria-expanded', 'false');
         }
+      });
+    }
+
+    var introItems = document.querySelectorAll('.typewriter-line');
+    if ('IntersectionObserver' in window) {
+      var introObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            introObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25, rootMargin: '0px 0px -6% 0px' });
+
+      introItems.forEach(function (item, index) {
+        item.style.transitionDelay = (index * 180) + 'ms';
+        introObserver.observe(item);
+      });
+    } else {
+      introItems.forEach(function (item) {
+        item.classList.add('visible');
       });
     }
   </script>
